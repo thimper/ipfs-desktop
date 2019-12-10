@@ -19,7 +19,8 @@
     "build:webui:download": "npx ipfs-or-gateway -c QmPkojhjJkJ5LEGBDrAvdftrjAYmi9GU5Cq27mWvZTDieW -p assets/webui/ -t 360000 --verbose",
     "build:webui:minimize": "shx rm -rf assets/webui/static/js/*.map && shx rm -rf assets/webui/static/css/*.map",
     "build:babel": "babel src --out-dir out --copy-files --source-maps",
-    "build:binaries": "electron-builder --publish onTag"
+    "build:binaries": "electron-builder --publish onTag",
+    "build:binaries2": "electron-builder"
   },
   "pre-commit": [
     "lint"
