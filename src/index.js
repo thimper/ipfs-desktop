@@ -23,7 +23,7 @@ import setupSecondInstance from './second-instance'
 if (app.dock) app.dock.hide()
 
 // Sets User Model Id so notifications work on Windows 10
-app.setAppUserModelId('io.ipfs.desktop')
+app.setAppUserModelId('com.slyzn.bcfs.desktop')
 
 // Fixes $PATH on macOS
 fixPath()
