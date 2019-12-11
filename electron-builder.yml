@@ -1,4 +1,4 @@
-appId: io.ipfs.desktop
+appId: com.slyzn.bcfs.desktop
 generateUpdatesFilesForAllChannels: true
 
 directories:
@@ -9,7 +9,7 @@ asarUnpack: 'out/**/scripts/**/*'
 mac:
   category: public.app-category.utilities
   darkModeSupport: true
-  icon: ipfs-desktop
+  icon: icon
 
 dmg:
   iconSize: 160
@@ -35,10 +35,10 @@ nsis:
 
 linux:
   artifactName: ${name}-${version}-${os}-${arch}.${ext}
-  executableName: ipfs-desktop
-  icon: ipfs-desktop
+  executableName: bcfs-desktop
+  icon: icon
   category: Network;FileTransfer;P2P
-  synopsis: A desktop client for IPFS
+  synopsis: A desktop client for BCFS
   maintainer: henrique@protocol.ai
   target:
     - tar.xz

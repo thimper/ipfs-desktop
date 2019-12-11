@@ -31,7 +31,7 @@
   "hashDownloaded": "Hash scaricato",
   "hashDownloadedClickToView": "Il contenuto dell'hash { hash } è stato scaricato. Clicca qui per visualizzarlo.",
   "updateAvailable": "Aggiornamento disponibile",
-  "clickToInstall": "Clicca qui per riavviare IPFS Desktop ed installare l'ultima versione.",
+  "clickToInstall": "Clicca qui per riavviare BCFS Desktop ed installare l'ultima versione.",
   "updateNotAvailable": "Nessun aggiornamento disponibile",
   "runningLatestVersion": "Stai utilizzando la versione più recente.",
   "couldNotCheckForUpdates": "Impossibile cercare aggiornamenti",
@@ -43,7 +43,7 @@
   "ok": "OK",
   "cancel": "Annulla",
   "reportTheError": "Segnala l'errore",
-  "restartIpfsDesktop": "Riavvia IPFS Desktop",
+  "restartIpfsDesktop": "Riavvia BCFS Desktop",
   "openLogs": "Apri i log",
   "takeScreenshot": "Screenshot eseguito",
   "downloadHash": "Scarica Hash",
@@ -62,19 +62,19 @@
   },
   "recoverableErrorDialog": {
     "title": "È stato riscontrato un errore",
-    "message": "È stato riscontrato un errore ma ciò non compromette l'esecuzione di IPFS Desktop. Puoi controllare i file di log oppure segnalare l'errore agli sviluppatori."
+    "message": "È stato riscontrato un errore ma ciò non compromette l'esecuzione di BCFS Desktop. Puoi controllare i file di log oppure segnalare l'errore agli sviluppatori."
   },
   "cannotConnectToApiDialog": {
     "title": "Impossibile connettersi alle API",
-    "message": "IPFS Desktop non riesce a connettersi all'indirizzo API fornito: { addr }."
+    "message": "BCFS Desktop non riesce a connettersi all'indirizzo API fornito: { addr }."
   },
   "ipfsDesktopHasShutdownDialog": {
-    "title": "IPFS Desktop si è arrestato",
-    "message": "A causa di un errore IPFS Desktop si è arrestato. Puoi riavviare l'applicazione o segnalare l'errore agli sviluppatori. Per la segnalazione è necessario un account GitHub."
+    "title": "BCFS Desktop si è arrestato",
+    "message": "A causa di un errore BCFS Desktop si è arrestato. Puoi riavviare l'applicazione o segnalare l'errore agli sviluppatori. Per la segnalazione è necessario un account GitHub."
   },
   "moveRepositoryWarnDialog": {
     "title": "Move repository",
-    "message": "If your repository is taking too much space on your main drive, you can move it to some other location. Bear in mind that the new location must always be available in order for IPFS Desktop to work correctly.",
+    "message": "If your repository is taking too much space on your main drive, you can move it to some other location. Bear in mind that the new location must always be available in order for BCFS Desktop to work correctly.",
     "action": "Move and restart node"
   },
   "moveRepositorySuccessDialog": {

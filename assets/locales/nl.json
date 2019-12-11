@@ -31,7 +31,7 @@
   "hashDownloaded": "Hash gedownload",
   "hashDownloadedClickToView": "Inhoud van { hash } gedownload. Klik om te bekijken.",
   "updateAvailable": "Update beschikbaar",
-  "clickToInstall": "Klik hier om te herstarten en de nieuwere versie van IPFS Desktop te installeren.",
+  "clickToInstall": "Klik hier om te herstarten en de nieuwere versie van BCFS Desktop te installeren.",
   "updateNotAvailable": "Update niet beschikbaar",
   "runningLatestVersion": "Je lijkt de laatste versie te draaien.",
   "couldNotCheckForUpdates": "Kon niet controleren of er updates zijn.",
@@ -43,7 +43,7 @@
   "ok": "Ok",
   "cancel": "Annuleren",
   "reportTheError": "Rapporteer deze fout",
-  "restartIpfsDesktop": "IPFS Desktop herstarten",
+  "restartIpfsDesktop": "BCFS Desktop herstarten",
   "openLogs": "Logs openen",
   "takeScreenshot": "Screenshot maken",
   "downloadHash": "Hash downloaden",
@@ -62,19 +62,19 @@
   },
   "recoverableErrorDialog": {
     "title": "Een fout is opgetreden",
-    "message": "Een fout is opgetreden maar dit voorkomt niet dat IPFS Desktop draait. Je kan zelf de logs inspecteren of de fout rapporteren aan de ontwikkelaars."
+    "message": "Een fout is opgetreden maar dit voorkomt niet dat BCFS Desktop draait. Je kan zelf de logs inspecteren of de fout rapporteren aan de ontwikkelaars."
   },
   "cannotConnectToApiDialog": {
     "title": "Kan geen verbinding maken met de API",
-    "message": "IPFS Desktop kan geen verbinding maken met het geleverde API adres: { addr }"
+    "message": "BCFS Desktop kan geen verbinding maken met het geleverde API adres: { addr }"
   },
   "ipfsDesktopHasShutdownDialog": {
-    "title": "IPFS Desktop is gesloten",
-    "message": "IPFS Desktop is gesloten vanwege een fout. Je kan de applicatie herstarten of de fout rapporteren aan de ontwikkelaars. Dit vereist een Github account."
+    "title": "BCFS Desktop is gesloten",
+    "message": "BCFS Desktop is gesloten vanwege een fout. Je kan de applicatie herstarten of de fout rapporteren aan de ontwikkelaars. Dit vereist een Github account."
   },
   "moveRepositoryWarnDialog": {
     "title": "Repository verplaatsen",
-    "message": "Als je repository te veel ruimte inneemt op je harde schijf kan je dit naar een andere locatie verplaatsen. Bedenk dat deze nieuwe locatie altijd beschikbaar moet zijn voor IPFS Desktop om correct te werken.",
+    "message": "Als je repository te veel ruimte inneemt op je harde schijf kan je dit naar een andere locatie verplaatsen. Bedenk dat deze nieuwe locatie altijd beschikbaar moet zijn voor BCFS Desktop om correct te werken.",
     "action": "Verplaats en herstart node"
   },
   "moveRepositorySuccessDialog": {

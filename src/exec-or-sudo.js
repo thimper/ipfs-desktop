@@ -70,7 +70,7 @@ export default async function ({ script, scope, failSilently, trySudo = true }) 
   // Otherwise, try to elevate the user.
   const command = `${env.sudo} "${process.execPath}" "${script}" ${dataArg}`
   return new Promise(resolve => {
-    sudo.exec(command, { name: 'IPFS Desktop' }, (err, stdout, stderr) => {
+    sudo.exec(command, { name: 'BCFS Desktop' }, (err, stdout, stderr) => {
       resolve(getResult(err, stdout, stderr, scope, failSilently))
     })
   })

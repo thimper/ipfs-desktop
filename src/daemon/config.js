@@ -23,7 +23,7 @@ function writeConfigFile (ipfsd, config) {
 
 // Set default mininum and maximum of connections to mantain
 // by default. This must only be called for repositories created
-// by IPFS Desktop. Existing ones shall remain intact.
+// by BCFS Desktop. Existing ones shall remain intact.
 export function applyDefaults (ipfsd) {
   const config = readConfigFile(ipfsd)
 

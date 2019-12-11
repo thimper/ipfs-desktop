@@ -7,7 +7,7 @@ const issueTemplate = (e) => `Please describe what you were doing when this erro
 **Specifications**
 
 - **OS**: ${process.platform}
-- **IPFS Desktop Version**: ${app.getVersion()}
+- **BCFS Desktop Version**: ${app.getVersion()}
 - **Electron Version**: ${process.versions.electron}
 - **Chrome Version**: ${process.versions.chrome}
 

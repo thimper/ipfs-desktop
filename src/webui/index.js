@@ -13,7 +13,7 @@ const createWindow = () => {
   const dimensions = screen.getPrimaryDisplay()
 
   const window = new BrowserWindow({
-    title: 'IPFS Desktop',
+    title: 'BCFS Desktop',
     show: false,
     autoHideMenuBar: true,
     titleBarStyle: 'hiddenInset',

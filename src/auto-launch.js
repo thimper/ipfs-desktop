@@ -20,7 +20,7 @@ function isSupported () {
 // TODO: remove on 0.11.0.
 async function disableOldLogin () {
   try {
-    const autoLauncher = new AutoLaunch({ name: 'IPFS Desktop' })
+    const autoLauncher = new AutoLaunch({ name: 'BCFS Desktop' })
 
     if (await autoLauncher.isEnabled()) {
       await autoLauncher.disable()
@@ -44,8 +44,8 @@ async function enable () {
   const desktop = `[Desktop Entry]
 Type=Application
 Version=1.0
-Name=IPFS Desktop
-Comment=IPFS Desktop Startup Script
+Name=BCFS Desktop
+Comment=BCFS Desktop Startup Script
 Exec="${process.execPath}"
 Icon=ipfs-desktop
 StartupNotify=false

@@ -3,7 +3,7 @@
   <metadata>
     <id>ipfs-desktop</id>
     <version>0.10.2</version>
-    <title>IPFS Desktop</title>
+    <title>BCFS Desktop</title>
     <authors>ipfs-shipyard</authors>
     <owners>hacdias</owners>
     <projectUrl>https://github.com/ipfs-shipyard/ipfs-desktop/</projectUrl>
@@ -14,10 +14,10 @@
     <tags>ipfs-desktop ipfs p2p distributed InterPlanetary-File-System gateway protocol</tags>
     <summary>A desktop client for IPFS.</summary>
     <description>
-    IPFS Desktop
+    BCFS Desktop
 
     A desktop client for [IPFS](https://ipfs.io).
-    You don't need the command line to run an IPFS node. Just install IPFS Desktop and have all the power of IPFS in your hands. Powered by [Web UI](https://github.com/ipfs-shipyard/ipfs-webui).
+    You don't need the command line to run an IPFS node. Just install BCFS Desktop and have all the power of IPFS in your hands. Powered by [Web UI](https://github.com/ipfs-shipyard/ipfs-webui).
     </description>
   </metadata>
   <files>

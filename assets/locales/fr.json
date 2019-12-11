@@ -31,7 +31,7 @@
   "hashDownloaded": "Hash téléchargé",
   "hashDownloadedClickToView": "Contenu du hash { hash } téléchargé. Cliquez pour voir.",
   "updateAvailable": "Mise à jour disponible",
-  "clickToInstall": "Cliquez ici pour redémarrer et installer la nouvelle version d'IPFS Desktop.",
+  "clickToInstall": "Cliquez ici pour redémarrer et installer la nouvelle version d'BCFS Desktop.",
   "updateNotAvailable": "Mise à jour indisponible",
   "runningLatestVersion": "Vous semblez utiliser la dernière version.",
   "couldNotCheckForUpdates": "Impossible de vérifier les mises à jour",
@@ -43,7 +43,7 @@
   "ok": "OK",
   "cancel": "Annuler",
   "reportTheError": "Reporter l'erreur",
-  "restartIpfsDesktop": "Redémarrer IPFS Desktop",
+  "restartIpfsDesktop": "Redémarrer BCFS Desktop",
   "openLogs": "Ouvrir les logs",
   "takeScreenshot": "Prendre une Capture d'écran",
   "downloadHash": "Télécharger ce Hash",
@@ -62,19 +62,19 @@
   },
   "recoverableErrorDialog": {
     "title": "Une erreur est apparue",
-    "message": "Une erreur est apparue, mais cela ne semble pas venir de l'exécution d’IPFS Desktop. Vous pouvez inspecter les logs pour soumettre vous-même ou reporter cela aux développeurs. "
+    "message": "Une erreur est apparue, mais cela ne semble pas venir de l'exécution d’BCFS Desktop. Vous pouvez inspecter les logs pour soumettre vous-même ou reporter cela aux développeurs. "
   },
   "cannotConnectToApiDialog": {
     "title": "Connexion à l'API impossible",
-    "message": "IPFS Desktop ne peut ce connecter à l'address d'API fournit : { addr }."
+    "message": "BCFS Desktop ne peut ce connecter à l'address d'API fournit : { addr }."
   },
   "ipfsDesktopHasShutdownDialog": {
-    "title": "IPFS Desktop est éteint",
-    "message": "IPFS Desktop est éteint à cause d'une erreur. Vous pouvez tenter de le redémarrer ou reporter l'erreur aux développeurs, vous auriez besoin d’un compte Github pour cela."
+    "title": "BCFS Desktop est éteint",
+    "message": "BCFS Desktop est éteint à cause d'une erreur. Vous pouvez tenter de le redémarrer ou reporter l'erreur aux développeurs, vous auriez besoin d’un compte Github pour cela."
   },
   "moveRepositoryWarnDialog": {
     "title": "Bouger le dépôt",
-    "message": "Si votre dépôt prend trop de place sur votre disque principal, vous pouvez le bouger à une autre place. Garder à l'esprit qu’IPFS Desktop doit avoir accès à cet emplacement pour son bon fonctionnement.",
+    "message": "Si votre dépôt prend trop de place sur votre disque principal, vous pouvez le bouger à une autre place. Garder à l'esprit qu’BCFS Desktop doit avoir accès à cet emplacement pour son bon fonctionnement.",
     "action": "Bouger et redémarrer le nœud"
   },
   "moveRepositorySuccessDialog": {

@@ -43,7 +43,7 @@
   "ok": "OK",
   "cancel": "Zrušit",
   "reportTheError": "Nahlásit chybu",
-  "restartIpfsDesktop": "Restartovat IPFS Desktop",
+  "restartIpfsDesktop": "Restartovat BCFS Desktop",
   "openLogs": "Otevřít logy",
   "takeScreenshot": "Udělat snímek obrazovky",
   "downloadHash": "Stáhnout hash",
@@ -66,7 +66,7 @@
   },
   "cannotConnectToApiDialog": {
     "title": "Nelze se připojit k API",
-    "message": "IPFS Desktop se nemůže připojit k uvedené adrese API: { addr }."
+    "message": "BCFS Desktop se nemůže připojit k uvedené adrese API: { addr }."
   },
   "ipfsDesktopHasShutdownDialog": {
     "title": "Desktop IPFS byl vypnut",
@@ -74,7 +74,7 @@
   },
   "moveRepositoryWarnDialog": {
     "title": "Přesunout úložiště",
-    "message": "Pokud vaše úložiště zabírá příliš mnoho místa na hlavním disku, můžete jej přesunout na jiné místo. Nezapomeňte, že nové umístění musí být vždy dostupné, aby IPFS Desktop fungoval správně.",
+    "message": "Pokud vaše úložiště zabírá příliš mnoho místa na hlavním disku, můžete jej přesunout na jiné místo. Nezapomeňte, že nové umístění musí být vždy dostupné, aby BCFS Desktop fungoval správně.",
     "action": "Přesunout a restartovat uzel"
   },
   "moveRepositorySuccessDialog": {

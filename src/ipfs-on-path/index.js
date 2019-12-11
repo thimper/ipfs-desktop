@@ -35,7 +35,7 @@ async function firstTime () {
   }
 
   // Tries to install ipfs-on-path on the system. It doesn't try to elevate
-  // to sudo so the user doesn't get annoying prompts when running IPFS Desktop
+  // to sudo so the user doesn't get annoying prompts when running BCFS Desktop
   // for the first time. Sets the option according to the success or failure of the
   // procedure.
   const res = await run('install', { trySudo: false, failSilently: true })
