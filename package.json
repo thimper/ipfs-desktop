@@ -19,8 +19,8 @@
     "build:webui:download": "npx ipfs-or-gateway -c QmPkojhjJkJ5LEGBDrAvdftrjAYmi9GU5Cq27mWvZTDieW -p assets/webui/ --clean -a http://ipfs.slyzn.com/ -t 360000 --verbose",
     "build:webui:minimize": "shx rm -rf assets/webui/static/js/*.map && shx rm -rf assets/webui/static/css/*.map",
     "build:babel": "babel src --out-dir out --copy-files --source-maps",
-    "build:binaries": "electron-builder --publish onTag",
-    "build:binaries2": "electron-builder"
+    "build:publish": "electron-builder --publish onTag",
+    "build:binaries": "electron-builder --publish never"
   },
   "pre-commit": [
     "lint"
@@ -33,7 +33,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/ipfs-shipyard/ipfs-desktop"
+    "url": "https://github.com/thimper/ipfs-desktop"
   },
   "author": "Protocol Labs, Inc.",
   "contributors": [
@@ -45,9 +45,9 @@
   ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ipfs-shipyard/ipfs-desktop/issues"
+    "url": "https://github.com/thimper/ipfs-desktop/issues"
   },
-  "homepage": "https://github.com/ipfs-shipyard/ipfs-desktop",
+  "homepage": "http://block.slyzn.com",
   "devDependencies": {
     "@babel/cli": "^7.7.4",
     "@babel/core": "^7.7.4",
