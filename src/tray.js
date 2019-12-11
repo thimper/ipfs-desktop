@@ -104,24 +104,24 @@ function buildMenu (ctx) {
         {
           label: i18n.t('versions'),
           enabled: false
-        },
-        {
-          label: `ipfs-desktop ${VERSION}`,
-          click: () => { shell.openExternal('https://github.com/ipfs-shipyard/ipfs-desktop/releases') }
-        },
-        {
-          label: `go-ipfs ${GO_IPFS_VERSION}`,
-          click: () => { shell.openExternal('https://github.com/ipfs/go-ipfs/releases') }
-        },
-        { type: 'separator' },
+        }
+        // ,{
+        //   label: `ipfs-desktop ${VERSION}`,
+        //   click: () => { shell.openExternal('https://github.com/ipfs-shipyard/ipfs-desktop/releases') }
+        // }
+        // ,{
+        //   label: `go-ipfs ${GO_IPFS_VERSION}`,
+        //   click: () => { shell.openExternal('https://github.com/ipfs/go-ipfs/releases') }
+        // }
+        ,{ type: 'separator' },
         {
           label: i18n.t('checkForUpdates'),
           click: () => { ctx.checkForUpdates() }
-        },
-        {
-          label: i18n.t('viewOnGitHub'),
-          click: () => { shell.openExternal('https://github.com/ipfs-shipyard/ipfs-desktop/blob/master/README.md') }
         }
+        // ,{
+        //   label: i18n.t('viewOnGitHub'),
+        //   click: () => { shell.openExternal('https://github.com/ipfs-shipyard/ipfs-desktop/blob/master/README.md') }
+        // }
       ]
     },
     {
@@ -169,7 +169,7 @@ export default function (ctx) {
   const setupMenu = () => {
     menu = buildMenu(ctx)
     tray.setContextMenu(menu)
-    tray.setToolTip('IPFS Desktop')
+    tray.setToolTip('BCFS Desktop')
 
     menu.on('menu-will-show', () => { ipcMain.emit('menubar-will-open') })
     menu.on('menu-will-close', () => { ipcMain.emit('menubar-will-close') })

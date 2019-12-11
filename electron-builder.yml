@@ -9,6 +9,7 @@ asarUnpack: 'out/**/scripts/**/*'
 mac:
   category: public.app-category.utilities
   darkModeSupport: true
+  icon: ipfs-desktop
 
 dmg:
   iconSize: 160
