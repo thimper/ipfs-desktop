@@ -47,7 +47,7 @@ Version=1.0
 Name=BCFS Desktop
 Comment=BCFS Desktop Startup Script
 Exec="${process.execPath}"
-Icon=ipfs-desktop
+Icon=bcfs-desktop
 StartupNotify=false
 Terminal=false`
 

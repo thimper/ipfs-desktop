@@ -11,6 +11,8 @@ mac:
   darkModeSupport: true
   icon: icon
 
+win:
+  icon: icon
 dmg:
   iconSize: 160
   iconTextSize: 12

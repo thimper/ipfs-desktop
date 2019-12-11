@@ -11,7 +11,7 @@ serve({ scheme: 'webui', directory: join(__dirname, '../../assets/webui') })
 
 const createWindow = () => {
   const dimensions = screen.getPrimaryDisplay()
-
+  logger.info("__dirname=" + join(__dirname, '../icon.png'))
   const window = new BrowserWindow({
     title: 'BCFS Desktop',
     show: false,
@@ -20,6 +20,7 @@ const createWindow = () => {
     fullscreenWindowTitle: true,
     width: store.get('window.width', dimensions.width < 1440 ? dimensions.width : 1440),
     height: store.get('window.height', dimensions.height < 900 ? dimensions.height : 900),
+    icon: join(__dirname, '../icon.png'),
     webPreferences: {
       preload: join(__dirname, 'preload.js'),
       webSecurity: false,
