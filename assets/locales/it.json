@@ -1,9 +1,9 @@
 {
-  "ipfsIsRunning": "IPFS è in esecuzione",
-  "ipfsIsStopping": "IPFS si sta arrestando",
-  "ipfsIsStarting": "IPFS si sta avviando",
-  "ipfsIsNotRunning": "IPFS non è in esecuzione",
-  "ipfsHasErrored": "IPFS è in errore",
+  "ipfsIsRunning": "BCFS è in esecuzione",
+  "ipfsIsStopping": "BCFS si sta arrestando",
+  "ipfsIsStarting": "BCFS si sta avviando",
+  "ipfsIsNotRunning": "BCFS non è in esecuzione",
+  "ipfsHasErrored": "BCFS è in errore",
   "start": "Avvia",
   "stop": "Arresta",
   "restart": "Riavvia",
@@ -23,7 +23,7 @@
   "couldNotTakeScreenshot": "Impossibile eseguire screenshot",
   "errorwhileTakingScreenshot": "È stato riscontrato un errore durante lo screenshot.",
   "clickToOpenLogs": "Clicca qui per aprire i file di log.",
-  "ipfsNotRunning": "IPFS non è in esecuzione",
+  "ipfsNotRunning": "BCFS non è in esecuzione",
   "cantDownloadHash": "Impossibile scaricare l'hash",
   "invalidHashClipboard": "L'hash copiato non è valido.",
   "errorWhileDownloadingHash": "È stato riscontrato un errore durante l'acquisizione dell'hash.",
@@ -50,15 +50,15 @@
   "moveRepositoryLocation": "Move Repository Location",
   "polkitDialog": {
     "title": "Polkit non trovato",
-    "message": "IPFS non può essere aggiunto in /usr/local/bin/ senza polkit agent."
+    "message": "BCFS non può essere aggiunto in /usr/local/bin/ senza polkit agent."
   },
   "noPermissionDialog": {
     "title": "Nessun permesso",
-    "message": "Impossibile aggiungere IPFS in /usr/local/bin/. Password errata o permessi insufficienti."
+    "message": "Impossibile aggiungere BCFS in /usr/local/bin/. Password errata o permessi insufficienti."
   },
   "ipfsNotRunningDialog": {
-    "title": "IPFS non è in esecuzione",
-    "message": "Per compiere questa azione è necessario che IPFS sia in esecuzione. Vuoi avviare il servizio?"
+    "title": "BCFS non è in esecuzione",
+    "message": "Per compiere questa azione è necessario che BCFS sia in esecuzione. Vuoi avviare il servizio?"
   },
   "recoverableErrorDialog": {
     "title": "È stato riscontrato un errore",

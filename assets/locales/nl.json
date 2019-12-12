@@ -1,9 +1,9 @@
 {
-  "ipfsIsRunning": "IPFS draait",
-  "ipfsIsStopping": "IPFS is aan het stoppen",
-  "ipfsIsStarting": "IPFS is aan het starten",
-  "ipfsIsNotRunning": "IPFS draait niet",
-  "ipfsHasErrored": "IPFS heeft een fout",
+  "ipfsIsRunning": "BCFS draait",
+  "ipfsIsStopping": "BCFS is aan het stoppen",
+  "ipfsIsStarting": "BCFS is aan het starten",
+  "ipfsIsNotRunning": "BCFS draait niet",
+  "ipfsHasErrored": "BCFS heeft een fout",
   "start": "Start",
   "stop": "Stop",
   "restart": "Herstart",
@@ -23,7 +23,7 @@
   "couldNotTakeScreenshot": "Kon geen screenshot maken",
   "errorwhileTakingScreenshot": "Er is een fout opgetreden bij het maken van de screenshot.",
   "clickToOpenLogs": "Klik hier om de logs te openen.",
-  "ipfsNotRunning": "IPFS draait niet",
+  "ipfsNotRunning": "BCFS draait niet",
   "cantDownloadHash": "Kon hash niet downloaden.",
   "invalidHashClipboard": "De hash op het klembord is niet geldig.",
   "errorWhileDownloadingHash": "Er is een fout opgetreden bij het ophalen van de hash.",
@@ -50,15 +50,15 @@
   "moveRepositoryLocation": "Repository locatie verplaatsen",
   "polkitDialog": {
     "title": "Polkit niet gevonden",
-    "message": "IPFS kan niet worden toegevoegd aan /usr/local/bin/ zonder polkit agent."
+    "message": "BCFS kan niet worden toegevoegd aan /usr/local/bin/ zonder polkit agent."
   },
   "noPermissionDialog": {
     "title": "Geen toestemming",
-    "message": "IPFS kan niet worden toegevoegd aan /usr/local/bin/ omdat je het verkeerde wachtwoord heb ingevoerd of geen toestemming hebt verleend."
+    "message": "BCFS kan niet worden toegevoegd aan /usr/local/bin/ omdat je het verkeerde wachtwoord heb ingevoerd of geen toestemming hebt verleend."
   },
   "ipfsNotRunningDialog": {
-    "title": "IPFS draait niet",
-    "message": "IPFS moet draaien om deze actie uit te kunnen voeren. Wil je de daemon starten?"
+    "title": "BCFS draait niet",
+    "message": "BCFS moet draaien om deze actie uit te kunnen voeren. Wil je de daemon starten?"
   },
   "recoverableErrorDialog": {
     "title": "Een fout is opgetreden",

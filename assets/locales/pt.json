@@ -1,9 +1,9 @@
 {
-  "ipfsIsRunning": "O IPFS está a ser executado",
-  "ipfsIsStopping": "O IPFS está a ser parado",
-  "ipfsIsStarting": "O IPFS está a ser iniciado",
-  "ipfsIsNotRunning": "O IPFS não está a ser executado",
-  "ipfsHasErrored": "O IPFS teve um ou mais erros",
+  "ipfsIsRunning": "O BCFS está a ser executado",
+  "ipfsIsStopping": "O BCFS está a ser parado",
+  "ipfsIsStarting": "O BCFS está a ser iniciado",
+  "ipfsIsNotRunning": "O BCFS não está a ser executado",
+  "ipfsHasErrored": "O BCFS teve um ou mais erros",
   "start": "Iniciar",
   "stop": "Parar",
   "restart": "Reiniciar",
@@ -23,7 +23,7 @@
   "couldNotTakeScreenshot": "Não foi possível tirar a captura de ecrã",
   "errorwhileTakingScreenshot": "Ocorreu um erro ao capturar o ecrã.",
   "clickToOpenLogs": "Clique para abrir os registos.",
-  "ipfsNotRunning": "O IPFS não está a ser executado",
+  "ipfsNotRunning": "O BCFS não está a ser executado",
   "cantDownloadHash": "Não foi possível descarregar a hash",
   "invalidHashClipboard": "The hash on the clipboard is not valid.",
   "errorWhileDownloadingHash": "Um erro ocorreu ao obter a hash.",
@@ -50,15 +50,15 @@
   "moveRepositoryLocation": "Move Repository Location",
   "polkitDialog": {
     "title": "Polkit não encontrado",
-    "message": "O IPFS não pode ser adicionado a /usr/local/bin/ sem o agente polkit."
+    "message": "O BCFS não pode ser adicionado a /usr/local/bin/ sem o agente polkit."
   },
   "noPermissionDialog": {
     "title": "Sem permissão",
-    "message": "Não foi possível adicionar o IPFS a /usr/local/bin/, por ter introduzido a palavra-passe errada ou porque negou a permissão."
+    "message": "Não foi possível adicionar o BCFS a /usr/local/bin/, por ter introduzido a palavra-passe errada ou porque negou a permissão."
   },
   "ipfsNotRunningDialog": {
-    "title": "O IPFS não está a ser executado",
-    "message": "O IPFS tem de estar a ser executado para fazer esta ação. Quer iniciar o daemon?"
+    "title": "O BCFS não está a ser executado",
+    "message": "O BCFS tem de estar a ser executado para fazer esta ação. Quer iniciar o daemon?"
   },
   "recoverableErrorDialog": {
     "title": "Ocorreu um erro",

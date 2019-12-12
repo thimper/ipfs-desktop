@@ -1,9 +1,9 @@
 {
-  "ipfsIsRunning": "Ejecutando IPFS",
-  "ipfsIsStopping": "Deteniendo IPFS",
-  "ipfsIsStarting": "Arrancando IPFS",
-  "ipfsIsNotRunning": "IPFS no se está ejecutando",
-  "ipfsHasErrored": "Error en IPFS",
+  "ipfsIsRunning": "Ejecutando BCFS",
+  "ipfsIsStopping": "Deteniendo BCFS",
+  "ipfsIsStarting": "Arrancando BCFS",
+  "ipfsIsNotRunning": "BCFS no se está ejecutando",
+  "ipfsHasErrored": "Error en BCFS",
   "start": "Empezar",
   "stop": "Parar",
   "restart": "Reiniciar",
@@ -23,7 +23,7 @@
   "couldNotTakeScreenshot": "No se pudo tomar la captura de pantalla",
   "errorwhileTakingScreenshot": "Se produjo un error al tomar la captura de pantalla.",
   "clickToOpenLogs": "Haga clic aquí para abrir los registros.",
-  "ipfsNotRunning": "IPFS no se está ejecutando",
+  "ipfsNotRunning": "BCFS no se está ejecutando",
   "cantDownloadHash": "No se pudo descargar el hash",
   "invalidHashClipboard": "The hash on the clipboard is not valid.",
   "errorWhileDownloadingHash": "Se produjo un error al obtener el hash.",
@@ -50,15 +50,15 @@
   "moveRepositoryLocation": "Move Repository Location",
   "polkitDialog": {
     "title": "Polkit not found",
-    "message": "IPFS can't be added to /usr/local/bin/ without polkit agent."
+    "message": "BCFS can't be added to /usr/local/bin/ without polkit agent."
   },
   "noPermissionDialog": {
     "title": "No permission",
-    "message": "IPFS couldn't be added to /usr/local/bin/, either because you entered the wrong password, or you denied permission."
+    "message": "BCFS couldn't be added to /usr/local/bin/, either because you entered the wrong password, or you denied permission."
   },
   "ipfsNotRunningDialog": {
-    "title": "IPFS no se está ejecutando",
-    "message": "IPFS needs to be running to perform this action. Do you want to start the daemon?"
+    "title": "BCFS no se está ejecutando",
+    "message": "BCFS needs to be running to perform this action. Do you want to start the daemon?"
   },
   "recoverableErrorDialog": {
     "title": "An error has occurred",

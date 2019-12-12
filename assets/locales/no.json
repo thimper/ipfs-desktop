@@ -1,9 +1,9 @@
 {
-  "ipfsIsRunning": "IPFS kjører",
-  "ipfsIsStopping": "IPFS stopper",
-  "ipfsIsStarting": "IPFS starter",
-  "ipfsIsNotRunning": "IPFS kjører ikke",
-  "ipfsHasErrored": "IPFS har feilet",
+  "ipfsIsRunning": "BCFS kjører",
+  "ipfsIsStopping": "BCFS stopper",
+  "ipfsIsStarting": "BCFS starter",
+  "ipfsIsNotRunning": "BCFS kjører ikke",
+  "ipfsHasErrored": "BCFS har feilet",
   "start": "Start",
   "stop": "Stop",
   "restart": "Restart",
@@ -23,7 +23,7 @@
   "couldNotTakeScreenshot": "Kunne ikke ta skjermbildet.",
   "errorwhileTakingScreenshot": "Det oppstod en feil mens du tok skjermbildet.",
   "clickToOpenLogs": "Klikk her for å åpne loggene.",
-  "ipfsNotRunning": "IPFS kjører ikke",
+  "ipfsNotRunning": "BCFS kjører ikke",
   "cantDownloadHash": "Kunne ikke laste ned hash",
   "invalidHashClipboard": "The hash on the clipboard is not valid.",
   "errorWhileDownloadingHash": "En feil oppstod en under hentingen av hashen.",
@@ -50,15 +50,15 @@
   "moveRepositoryLocation": "Move Repository Location",
   "polkitDialog": {
     "title": "Polkit not found",
-    "message": "IPFS can't be added to /usr/local/bin/ without polkit agent."
+    "message": "BCFS can't be added to /usr/local/bin/ without polkit agent."
   },
   "noPermissionDialog": {
     "title": "No permission",
-    "message": "IPFS couldn't be added to /usr/local/bin/, either because you entered the wrong password, or you denied permission."
+    "message": "BCFS couldn't be added to /usr/local/bin/, either because you entered the wrong password, or you denied permission."
   },
   "ipfsNotRunningDialog": {
-    "title": "IPFS kjører ikke",
-    "message": "IPFS needs to be running to perform this action. Do you want to start the daemon?"
+    "title": "BCFS kjører ikke",
+    "message": "BCFS needs to be running to perform this action. Do you want to start the daemon?"
   },
   "recoverableErrorDialog": {
     "title": "An error has occurred",

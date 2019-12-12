@@ -1,9 +1,9 @@
 {
-  "ipfsIsRunning": "IPFS is running",
-  "ipfsIsStopping": "IPFS is stopping",
-  "ipfsIsStarting": "IPFS is starting",
-  "ipfsIsNotRunning": "IPFS nebeží",
-  "ipfsHasErrored": "IPFS has errored",
+  "ipfsIsRunning": "BCFS is running",
+  "ipfsIsStopping": "BCFS is stopping",
+  "ipfsIsStarting": "BCFS is starting",
+  "ipfsIsNotRunning": "BCFS nebeží",
+  "ipfsHasErrored": "BCFS has errored",
   "start": "Start",
   "stop": "Stop",
   "restart": "Restart",
@@ -23,7 +23,7 @@
   "couldNotTakeScreenshot": "Could not take screenshot",
   "errorwhileTakingScreenshot": "An error occurred while taking the screenshot.",
   "clickToOpenLogs": "Kliknite sem pre otvorenie logov",
-  "ipfsNotRunning": "IPFS nebeží",
+  "ipfsNotRunning": "BCFS nebeží",
   "cantDownloadHash": "Nie je možné stiahnuť hash",
   "invalidHashClipboard": "The hash on the clipboard is not valid.",
   "errorWhileDownloadingHash": "An error occurred while getting the hash.",
@@ -50,15 +50,15 @@
   "moveRepositoryLocation": "Move Repository Location",
   "polkitDialog": {
     "title": "Polkit not found",
-    "message": "IPFS can't be added to /usr/local/bin/ without polkit agent."
+    "message": "BCFS can't be added to /usr/local/bin/ without polkit agent."
   },
   "noPermissionDialog": {
     "title": "No permission",
-    "message": "IPFS couldn't be added to /usr/local/bin/, either because you entered the wrong password, or you denied permission."
+    "message": "BCFS couldn't be added to /usr/local/bin/, either because you entered the wrong password, or you denied permission."
   },
   "ipfsNotRunningDialog": {
-    "title": "IPFS nebeží",
-    "message": "IPFS needs to be running to perform this action. Do you want to start the daemon?"
+    "title": "BCFS nebeží",
+    "message": "BCFS needs to be running to perform this action. Do you want to start the daemon?"
   },
   "recoverableErrorDialog": {
     "title": "An error has occurred",
