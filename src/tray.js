@@ -117,9 +117,6 @@ function buildMenu (ctx) {
         {
           label: i18n.t('checkForUpdates'),
           click: () => { ctx.checkForUpdates() }
-        },
-        {
-          label: `version ${VERSION}`
         }
         // ,{
         //   label: i18n.t('viewOnGitHub'),
