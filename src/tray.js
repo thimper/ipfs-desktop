@@ -105,10 +105,10 @@ function buildMenu (ctx) {
           label: i18n.t('versions'),
           enabled: false
         }
-        // ,{
-        //   label: `ipfs-desktop ${VERSION}`,
-        //   click: () => { shell.openExternal('https://github.com/ipfs-shipyard/ipfs-desktop/releases') }
-        // }
+        ,{
+          label: `bcfs-desktop ${VERSION}`
+          // click: () => { shell.openExternal('https://github.com/ipfs-shipyard/ipfs-desktop/releases') }
+        }
         // ,{
         //   label: `go-ipfs ${GO_IPFS_VERSION}`,
         //   click: () => { shell.openExternal('https://github.com/ipfs/go-ipfs/releases') }
@@ -117,6 +117,9 @@ function buildMenu (ctx) {
         {
           label: i18n.t('checkForUpdates'),
           click: () => { ctx.checkForUpdates() }
+        },
+        {
+          label: `version ${VERSION}`
         }
         // ,{
         //   label: i18n.t('viewOnGitHub'),

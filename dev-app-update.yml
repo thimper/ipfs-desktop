@@ -1,0 +1,4 @@
+owner: thimper
+repo: ipfs-desktop
+provider: github
+updaterCacheDirName: ipfs-desktop-updater
