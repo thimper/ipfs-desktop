@@ -89,9 +89,7 @@ export async function applyBcfsDefaults(ipfsd, inited = true) {
   }
 
   if (bcfsnodes && bcfsnodes.length > 0) {
-    if (!inited) {
-      config.Bootstrap = []
-    }
+    // config.Bootstrap = []
     for (let n of bcfsnodes) {
       if (config.Bootstrap.indexOf(n.trim()) < 0) {
         config.Bootstrap.push(n)
@@ -171,10 +169,10 @@ async function getBcfsNodes(){
     logger.info(`[bcfs-node] swarn key content ${typeof(swarmtxt.toString()) }`)
     switch(osname){
       case 'Darwin':
-        swarmtxt = swarmtxt.toString().replace("n","")
+        swarmtxt = swarmtxt.toString().replace("/\n","")
         break;
       case 'Windows_NT':
-        swarmtxt = swarmtxt.toString().replace("r","")
+        swarmtxt = swarmtxt.toString().replace("/r","")
           break;
       default:
         break;
