@@ -53,7 +53,8 @@ async function spawn ({ type, path, keysize }) {
     init: false,
     start: false
   })
-  
+  logger.info(`ipfsd.repoPath === ${ipfsd.repoPath}`)
+
   if (ipfsd.initialized) {
     checkCorsConfig(ipfsd)
     applyBcfsDefaults(ipfsd,true)

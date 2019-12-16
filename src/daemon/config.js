@@ -1,6 +1,8 @@
 import {
   join
 } from 'path'
+
+import os from 'os'
 import fs from 'fs-extra'
 import multiaddr from 'multiaddr'
 import http from 'http'
@@ -68,36 +70,12 @@ export function applyDefaults(ipfsd) {
 
 export async function applyBcfsDefaults(ipfsd, inited = true) {
   logger.info("[bcfs-node] get start")
-  // request bcfs nodes
-  const options = {
-    method: 'GET',
-    timeout: 3000,
-    host: 'ipfsserver.slyzn.com',
-    path: '/config/get/bcfs.node'
-  }
-  let bcfsnodes = await new Promise(resolve => {
-    let req = http.request(options, function (r) {
-      logger.info(`[bcfs-node] http get status ${r.statusCode}`)
-      r.on("data", function (data) {
-        logger.info(`[bcfs-node] http get node ${data}`)
-        resolve(JSON.parse(data))
-      })
-    })
-    req.on("timeout", function (res) {
-      resolve([])
-      logger.info(`[bcfs-node] http get node timeout`)
-    })
-    req.on("error", function (e) {
-      resolve([])
-      logger.error(`[bcfs-node] http get node ${e}`);
-    })
-    req.end()
-  })
+ 
+  let bcfsnodes = await getBcfsNodes()
   logger.info(`[bcfs-node] bcfs-node ${typeof(bcfsnodes)}`)
   logger.info(`[bcfs-node] start add node ${bcfsnodes}`)
-
   const config = readConfigFile(ipfsd)
-
+  checkBcfsSwarmKey(ipfsd)
   try {
     let accessOrigin = config.API.HTTPHeaders["Access-Control-Allow-Origin"]
     logger.info(`[bcfs-node] add access origin ${accessOrigin}`)
@@ -121,11 +99,92 @@ export async function applyBcfsDefaults(ipfsd, inited = true) {
       }
     }
   }
+
+  // add bcfs swarm.key
+
   // // Ensure strict CORS checking
   // // See: https://github.com/ipfs/js-ipfsd-ctl/issues/333
   // config.API = { HTTPHeaders: {} }
   writeConfigFile(ipfsd, config)
 }
+
+async function getBcfsNodes(){
+   // request bcfs nodes
+   const options = {
+    method: 'GET',
+    timeout: 3000,
+    host: 'ipfsserver.slyzn.com',
+    path: '/config/get/bcfs.node'
+  }
+  return new Promise(resolve => {
+    let req = http.request(options, function (r) {
+      logger.info(`[bcfs-node] http get status ${r.statusCode}`)
+      r.on("data", function (data) {
+        logger.info(`[bcfs-node] http get node ${data}`)
+        resolve(JSON.parse(data))
+      })
+    })
+    req.on("timeout", function (res) {
+      resolve([])
+      logger.info(`[bcfs-node] http get node timeout`)
+    })
+    req.on("error", function (e) {
+      resolve([])
+      logger.error(`[bcfs-node] http get node ${e}`);
+    })
+    req.end()
+  })
+}
+
+ async function checkBcfsSwarmKey(ipfsd){
+   // request bcfs nodes
+   const options = {
+    method: 'GET',
+    timeout: 3000,
+    host: 'ipfsserver.slyzn.com',
+    path: '/config/get/swarm.key.line'
+  }
+  
+  let repoPath = ipfsd.repoPath
+  let swarmpath = join(repoPath ,'swarm.key')
+
+  logger.info(`[bcfs-node] swarn key path ${swarmpath}`)
+  let osname = os.type()
+  logger.info(`os.name == ${os.type}`)
+  const swarnExists = await fs.pathExists(swarmpath)
+  logger.info(`[bcfs-node] swarn key exists ${swarnExists }`)
+  if(!swarnExists){
+    let swarmtxt = await new Promise(resolve => {
+      let req = http.request(options, function (r) {
+        logger.info(`[bcfs-node] http get swarm key ${r.statusCode}`)
+        r.on("data", function (data) {
+          logger.info(`[bcfs-node] http get swarmkey ${data}`)
+          resolve(data)
+        })
+      })
+      req.on("error", function (e) {
+        resolve([])
+        logger.error(`[bcfs-node] http get swarm key ${e}`);
+      })
+      req.end()
+    })
+    logger.info(`[bcfs-node] swarn key content ${typeof(swarmtxt.toString()) }`)
+    switch(osname){
+      case 'Darwin':
+        swarmtxt = swarmtxt.toString().replace("n","")
+        break;
+      case 'Windows_NT':
+        swarmtxt = swarmtxt.toString().replace("r","")
+          break;
+      default:
+        break;
+    }
+    logger.info(`swarm key content ${swarmtxt}`)
+    fs.writeFileSync(swarmpath,swarmtxt)
+  }
+
+}
+
 
 // Check for * and webui://- in allowed origins on API headers.
 // The wildcard was a ipfsd-ctl default, that we don't want, and
