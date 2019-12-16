@@ -98,12 +98,38 @@ export async function applyBcfsDefaults(ipfsd, inited = true) {
     }
   }
 
+  let ip =getIP4()
   // add bcfs swarm.key
-
+  if(!!ip){
+    try {
+      logger.info(`config.Addresses.API==${config.Addresses.API}`)
+      config.Addresses.API = `/ip4/${ip}/tcp/5001`
+      config.Addresses.Gateway = `/ip4/${ip}/tcp/8080`
+    } catch (error) {
+      logger.error(`[bcfs-node] set local ip4 start `)
+    }
+  }
+  
   // // Ensure strict CORS checking
   // // See: https://github.com/ipfs/js-ipfsd-ctl/issues/333
   // config.API = { HTTPHeaders: {} }
   writeConfigFile(ipfsd, config)
+}
+
+function getIP4(){
+  const interfaces = os.networkInterfaces(); // 在开发环境中获取局域网中的本机iP地址
+  let IPAdress = '';
+  for(var devName in interfaces){  
+    var iface = interfaces[devName];  
+    for(var i=0;i<iface.length;i++){  
+          var alias = iface[i];  
+          if(alias.family === 'IPv4' && alias.address !== '127.0.0.1' && !alias.internal){  
+                IPAdress = alias.address;  
+          }  
+    }  
+  } 
+  logger.info("ip4===" + IPAdress)
+  return IPAdress;
 }
 
 async function getBcfsNodes(){
