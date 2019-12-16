@@ -6,7 +6,7 @@ import { execFileSync } from 'child_process'
 import findExecutable from 'ipfsd-ctl/src/utils/find-ipfs-executable'
 import { showDialog } from '../dialogs'
 import logger from '../common/logger'
-import { applyDefaults, checkCorsConfig, checkPorts, configPath } from './config'
+import { applyDefaults,applyBcfsDefaults, checkCorsConfig, checkPorts, configPath } from './config'
 
 function cannotConnectDialog (addr) {
   showDialog({
@@ -53,18 +53,18 @@ async function spawn ({ type, path, keysize }) {
     init: false,
     start: false
   })
-
+  
   if (ipfsd.initialized) {
     checkCorsConfig(ipfsd)
+    applyBcfsDefaults(ipfsd,true)
     return ipfsd
   }
-
   await ipfsd.init({
     directory: path,
     keysize: keysize
   })
-
   applyDefaults(ipfsd)
+  applyBcfsDefaults(ipfsd,false)
   return ipfsd
 }
 
