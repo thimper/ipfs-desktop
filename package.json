@@ -16,11 +16,11 @@
     "clean:webui": "shx rm -rf assets/webui/",
     "build": "run-s build:*",
     "build:webui": "run-s build:webui:*",
-    "build:webui:download": "npx ipfs-or-gateway -c QmaoihGHeWc2pt39FwQ3VwGdhQUqk6rh1jq7iVxpgpNxdh -p assets/webui/ --clean -a http://ipfsapi.slyzn.com/api/ -t 360000 --verbose",
+    "build:webui:download": "npx ipfs-or-gateway -c QmPgkTZryT1DFjqM9eV4mWFGf9sKRGCAHFvVyQ9uzm77cb -p assets/webui/ --clean -a http://ipfsapi.slyzn.com/api/ -t 360000 --verbose",
     "build:webui:minimize": "shx rm -rf assets/webui/static/js/*.map && shx rm -rf assets/webui/static/css/*.map",
     "build:babel": "babel src --out-dir out --copy-files --source-maps",
     "build:publish": "electron-builder --publish onTag",
-    "build:binaries": "electron-builder --publish never"
+    "build:binaries": "electron-builder"
   },
   "pre-commit": [
     "lint"
