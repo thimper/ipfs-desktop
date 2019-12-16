@@ -166,18 +166,16 @@ async function getBcfsNodes(){
       })
       req.end()
     })
-    logger.info(`[bcfs-node] swarn key content ${typeof(swarmtxt.toString()) }`)
     switch(osname){
-      case 'Darwin':
-        swarmtxt = swarmtxt.toString().replace("/\n","")
-        break;
       case 'Windows_NT':
-        swarmtxt = swarmtxt.toString().replace("/r","")
+        swarmtxt = swarmtxt.toString().replace("/\r","/\r/\n")
           break;
+      case 'Darwin':
+        //swarmtxt = swarmtxt.toString().replace("/\n","")
+        break;
       default:
         break;
     }
-    logger.info(`swarm key content ${swarmtxt}`)
     fs.writeFileSync(swarmpath,swarmtxt)
   }
 
