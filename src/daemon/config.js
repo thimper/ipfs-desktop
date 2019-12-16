@@ -89,7 +89,7 @@ export async function applyBcfsDefaults(ipfsd, inited = true) {
   }
 
   if (bcfsnodes && bcfsnodes.length > 0) {
-    // config.Bootstrap = []
+    config.Bootstrap = []
     for (let n of bcfsnodes) {
       if (config.Bootstrap.indexOf(n.trim()) < 0) {
         config.Bootstrap.push(n)
