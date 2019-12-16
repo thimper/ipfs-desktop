@@ -1,35 +1,56 @@
-import { join } from 'path'
+import {
+  join
+} from 'path'
 import fs from 'fs-extra'
 import multiaddr from 'multiaddr'
 import http from 'http'
 import getPort from 'get-port'
-import { shell } from 'electron'
+import {
+  shell
+} from 'electron'
 import i18n from 'i18next'
-import { showDialog } from '../dialogs'
+import {
+  showDialog
+} from '../dialogs'
 import store from '../common/store'
 import logger from '../common/logger'
 
-export function configPath (ipfsd) {
+export function configPath(ipfsd) {
   return join(ipfsd.repoPath, 'config')
 }
 
-function readConfigFile (ipfsd) {
+function readConfigFile(ipfsd) {
   return fs.readJsonSync(configPath(ipfsd))
 }
 
-function writeConfigFile (ipfsd, config) {
-  fs.writeJsonSync(configPath(ipfsd), config, { spaces: 2 })
+function writeConfigFile(ipfsd, config) {
+  fs.writeJsonSync(configPath(ipfsd), config, {
+    spaces: 2
+  })
 }
 
 // Set default mininum and maximum of connections to mantain
 // by default. This must only be called for repositories created
 // by BCFS Desktop. Existing ones shall remain intact.
-export function applyDefaults (ipfsd) {
+export function applyDefaults(ipfsd) {
   const config = readConfigFile(ipfsd)
 
   // Ensure strict CORS checking
   // See: https://github.com/ipfs/js-ipfsd-ctl/issues/333
-  config.API = { HTTPHeaders: {} }
+  config.API = {
+    HTTPHeaders: {
+      "Access-Control-Allow-Methods": [
+        "PUT",
+        "GET",
+        "POST"
+      ],
+      "Access-Control-Allow-Origin": [
+        "http://localhost:8080",
+        "http://127.0.0.1:8080",
+        "http://video.slyzn.com",
+      ]
+    }
+  }
 
   config.Swarm = config.Swarm || {}
   config.Swarm.DisableNatPortMap = false
@@ -45,6 +66,67 @@ export function applyDefaults (ipfsd) {
   writeConfigFile(ipfsd, config)
 }
 
+export async function applyBcfsDefaults(ipfsd, inited = true) {
+  logger.info("[bcfs-node] get start")
+  // request bcfs nodes
+  const options = {
+    method: 'GET',
+    timeout: 3000,
+    host: 'ipfsserver.slyzn.com',
+    path: '/config/get/bcfs.node'
+  }
+  let bcfsnodes = await new Promise(resolve => {
+    let req = http.request(options, function (r) {
+      logger.info(`[bcfs-node] http get status ${r.statusCode}`)
+      r.on("data", function (data) {
+        logger.info(`[bcfs-node] http get node ${data}`)
+        resolve(JSON.parse(data))
+      })
+    })
+    req.on("timeout", function (res) {
+      resolve([])
+      logger.info(`[bcfs-node] http get node timeout`)
+    })
+    req.on("error", function (e) {
+      resolve([])
+      logger.error(`[bcfs-node] http get node ${e}`);
+    })
+    req.end()
+  })
+  logger.info(`[bcfs-node] bcfs-node ${typeof(bcfsnodes)}`)
+  logger.info(`[bcfs-node] start add node ${bcfsnodes}`)
+
+  const config = readConfigFile(ipfsd)
+
+  try {
+    let accessOrigin = config.API.HTTPHeaders["Access-Control-Allow-Origin"]
+    logger.info(`[bcfs-node] add access origin ${accessOrigin}`)
+    let slyznDomain = "http://video.slyzn.com"
+    if (accessOrigin.indexOf(slyznDomain) < 0) {
+      logger.info(`[bcfs-node] add access origin video.slyzn.com`)
+      accessOrigin.push(slyznDomain)
+    }
+  } catch (error) {
+      logger.error(`[bcfs-node] check access origin ${error}`)
+  }
+
+  if (bcfsnodes && bcfsnodes.length > 0) {
+    if (!inited) {
+      config.Bootstrap = []
+    }
+    for (let n of bcfsnodes) {
+      if (config.Bootstrap.indexOf(n.trim()) < 0) {
+        config.Bootstrap.push(n)
+        logger.info(`[bcfs-node] add node ${n} success`)
+      }
+    }
+  }
+  // // Ensure strict CORS checking
+  // // See: https://github.com/ipfs/js-ipfsd-ctl/issues/333
+  // config.API = { HTTPHeaders: {} }
+  writeConfigFile(ipfsd, config)
+}
+
 // Check for * and webui://- in allowed origins on API headers.
 // The wildcard was a ipfsd-ctl default, that we don't want, and
 // webui://- was an earlier experiement that should be cleared out.
@@ -52,7 +134,7 @@ export function applyDefaults (ipfsd) {
 // We remove them the first time we find them. If we find it again on subsequent
 // runs then we leave them in, under the assumption that you really want it.
 // TODO: show warning in UI when wildcard is in the allowed origins.
-export function checkCorsConfig (ipfsd) {
+export function checkCorsConfig(ipfsd) {
   if (store.get('checkedCorsConfig')) {
     // We've already checked so skip it.
     return
@@ -94,12 +176,12 @@ export function checkCorsConfig (ipfsd) {
   store.set('checkedCorsConfig', true)
 }
 
-const parseCfgMultiaddr = (addr) => (addr.includes('/http')
-  ? multiaddr(addr)
-  : multiaddr(addr).encapsulate('/http')
+const parseCfgMultiaddr = (addr) => (addr.includes('/http') ?
+  multiaddr(addr) :
+  multiaddr(addr).encapsulate('/http')
 )
 
-async function checkIfAddrIsDaemon (addr) {
+async function checkIfAddrIsDaemon(addr) {
   const options = {
     method: 'GET',
     host: addr.address,
@@ -120,7 +202,7 @@ async function checkIfAddrIsDaemon (addr) {
   })
 }
 
-async function checkPortsArray (ipfsd, addrs) {
+async function checkPortsArray(ipfsd, addrs) {
   addrs = addrs.filter(Boolean)
 
   for (const addr of addrs) {
@@ -137,7 +219,9 @@ async function checkPortsArray (ipfsd, addrs) {
       continue
     }
 
-    const freePort = await getPort({ port: getPort.makeRange(port, port + 100) })
+    const freePort = await getPort({
+      port: getPort.makeRange(port, port + 100)
+    })
 
     if (port !== freePort) {
       const opt = showDialog({
@@ -159,7 +243,7 @@ async function checkPortsArray (ipfsd, addrs) {
   }
 }
 
-export async function checkPorts (ipfsd) {
+export async function checkPorts(ipfsd) {
   const config = readConfigFile(ipfsd)
 
   const apiIsArr = Array.isArray(config.Addresses.API)
@@ -184,8 +268,12 @@ export async function checkPorts (ipfsd) {
   const apiPort = parseInt(configApiMa.nodeAddress().port, 10)
   const gatewayPort = parseInt(configGatewayMa.nodeAddress().port, 10)
 
-  const freeGatewayPort = await getPort({ port: getPort.makeRange(gatewayPort, gatewayPort + 100) })
-  const freeApiPort = await getPort({ port: getPort.makeRange(apiPort, apiPort + 100) })
+  const freeGatewayPort = await getPort({
+    port: getPort.makeRange(gatewayPort, gatewayPort + 100)
+  })
+  const freeApiPort = await getPort({
+    port: getPort.makeRange(apiPort, apiPort + 100)
+  })
 
   const busyApiPort = apiPort !== freeApiPort
   const busyGatewayPort = gatewayPort !== freeGatewayPort
