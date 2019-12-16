@@ -171,10 +171,10 @@ async function getBcfsNodes(){
     logger.info(`[bcfs-node] swarn key content ${typeof(swarmtxt.toString()) }`)
     switch(osname){
       case 'Darwin':
-        swarmtxt = swarmtxt.toString().replace("n","")
+        swarmtxt = swarmtxt.toString().replace("/\n","")
         break;
       case 'Windows_NT':
-        swarmtxt = swarmtxt.toString().replace("r","")
+        swarmtxt = swarmtxt.toString().replace("/\r/\n","/\n")
           break;
       default:
         break;
