@@ -1,9 +1,9 @@
 {
-  "ipfsIsRunning": "IPFS запущен",
-  "ipfsIsStopping": "IPFS останавлен",
-  "ipfsIsStarting": "IPFS запущен",
-  "ipfsIsNotRunning": "IPFS не запущен",
-  "ipfsHasErrored": "Произошла ошибка IPFS",
+  "ipfsIsRunning": "BCFS запущен",
+  "ipfsIsStopping": "BCFS останавлен",
+  "ipfsIsStarting": "BCFS запущен",
+  "ipfsIsNotRunning": "BCFS не запущен",
+  "ipfsHasErrored": "Произошла ошибка BCFS",
   "start": "Старт",
   "stop": "Стоп",
   "restart": "Перезапуск",
@@ -23,7 +23,7 @@
   "couldNotTakeScreenshot": "Не удалось сделать скриншот",
   "errorwhileTakingScreenshot": "Произошла ошибка при создании скриншота.",
   "clickToOpenLogs": "Нажмите здесь, чтобы открыть логи.",
-  "ipfsNotRunning": "IPFS не запущен",
+  "ipfsNotRunning": "BCFS не запущен",
   "cantDownloadHash": "Не удалось скачать хэш",
   "invalidHashClipboard": "Хэш в буфере обмена недопустим.",
   "errorWhileDownloadingHash": "Произошла ошибка при получении хэша.",
@@ -50,15 +50,15 @@
   "moveRepositoryLocation": "Переместить хранилище",
   "polkitDialog": {
     "title": "Библиотека Polkit не найдена",
-    "message": "IPFS нельзя добавить в /usr/local/bin/ без агента Polkit."
+    "message": "BCFS нельзя добавить в /usr/local/bin/ без агента Polkit."
   },
   "noPermissionDialog": {
     "title": "Нет разрешения",
-    "message": "IPFS не удалось добавить в /usr/local/bin/ либо потому, что вы ввели неверный пароль, либо вам было отказано в разрешении."
+    "message": "BCFS не удалось добавить в /usr/local/bin/ либо потому, что вы ввели неверный пароль, либо вам было отказано в разрешении."
   },
   "ipfsNotRunningDialog": {
-    "title": "IPFS не запущен",
-    "message": "Для выполнения этого действия необходимо запустить IPFS. Вы хотите запустить демон IPFS?"
+    "title": "BCFS не запущен",
+    "message": "Для выполнения этого действия необходимо запустить BCFS. Вы хотите запустить демон BCFS?"
   },
   "recoverableErrorDialog": {
     "title": "Произошла ошибка",

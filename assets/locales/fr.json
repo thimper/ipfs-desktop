@@ -1,9 +1,9 @@
 {
-  "ipfsIsRunning": "IPFS est en cours d'exécution",
-  "ipfsIsStopping": "IPFS est en cours d'arrêt",
-  "ipfsIsStarting": "IPFS est en cours de démarrage",
-  "ipfsIsNotRunning": "IPFS n'est pas en cours de fonctionnement",
-  "ipfsHasErrored": "IPFS est en erreur",
+  "ipfsIsRunning": "BCFS est en cours d'exécution",
+  "ipfsIsStopping": "BCFS est en cours d'arrêt",
+  "ipfsIsStarting": "BCFS est en cours de démarrage",
+  "ipfsIsNotRunning": "BCFS n'est pas en cours de fonctionnement",
+  "ipfsHasErrored": "BCFS est en erreur",
   "start": "Démarrer",
   "stop": "Arrêter",
   "restart": "Redémarrer",
@@ -23,7 +23,7 @@
   "couldNotTakeScreenshot": "La capture d'écran n'a pas pu être réalisée.",
   "errorwhileTakingScreenshot": "Une erreur est survenue pendant la prise de la capture d'écran.",
   "clickToOpenLogs": "Cliquez ici pour ouvrir les logs.",
-  "ipfsNotRunning": "IPFS n'est pas en cours de fonctionnement",
+  "ipfsNotRunning": "BCFS n'est pas en cours de fonctionnement",
   "cantDownloadHash": "Échec du téléchargement du hash",
   "invalidHashClipboard": "Le hash dans le presse-papiers n'est pas valide.",
   "errorWhileDownloadingHash": "Une erreur est survenue pendant la récupération du hash.",
@@ -50,15 +50,15 @@
   "moveRepositoryLocation": "Bouger la localisation du dépôt",
   "polkitDialog": {
     "title": "Polkit manquant",
-    "message": "IPFS ne peut ajouté dans /usr/local/bin sans un agent polkit."
+    "message": "BCFS ne peut ajouté dans /usr/local/bin sans un agent polkit."
   },
   "noPermissionDialog": {
     "title": "Non authorisé",
-    "message": "IPFS ne peut être ajouté dans /usr/local/bin/, soit parce que votre mot de passe n'est pas le bon, soit, vous n'êtes pas autorisé."
+    "message": "BCFS ne peut être ajouté dans /usr/local/bin/, soit parce que votre mot de passe n'est pas le bon, soit, vous n'êtes pas autorisé."
   },
   "ipfsNotRunningDialog": {
-    "title": "IPFS est à l'arrêt",
-    "message": "IPFS a besoin d'être lancé pour faire cela. Voulez-vous démarrer le démon ? "
+    "title": "BCFS est à l'arrêt",
+    "message": "BCFS a besoin d'être lancé pour faire cela. Voulez-vous démarrer le démon ? "
   },
   "recoverableErrorDialog": {
     "title": "Une erreur est apparue",

@@ -1,9 +1,9 @@
 {
-  "name": "ipfs-desktop",
+  "name": "bcfs-desktop",
   "private": true,
-  "version": "0.10.2",
+  "version": "0.10.3",
   "productName": "BCFS Desktop",
-  "description": "IPFS Native Application",
+  "description": "BCFS Native Application",
   "main": "out/index.js",
   "scripts": {
     "start": "cross-env NODE_ENV=development run-s build:babel start:electron",

@@ -1,9 +1,9 @@
 {
-  "ipfsIsRunning": "IPFS je spuštěn",
-  "ipfsIsStopping": "IPFS se zastavuje",
-  "ipfsIsStarting": "IPFS startuje",
-  "ipfsIsNotRunning": "IPFS neběží",
-  "ipfsHasErrored": "IPFS má chybu",
+  "ipfsIsRunning": "BCFS je spuštěn",
+  "ipfsIsStopping": "BCFS se zastavuje",
+  "ipfsIsStarting": "BCFS startuje",
+  "ipfsIsNotRunning": "BCFS neběží",
+  "ipfsHasErrored": "BCFS má chybu",
   "start": "Začít",
   "stop": "Zastavit",
   "restart": "Restartovat",
@@ -23,7 +23,7 @@
   "couldNotTakeScreenshot": "Snímek obrazovky nelze pořídit",
   "errorwhileTakingScreenshot": "Při pořizování snímku obrazovky došlo k chybě.",
   "clickToOpenLogs": "Klepnutím sem otevřete logy.",
-  "ipfsNotRunning": "IPFS neběží",
+  "ipfsNotRunning": "BCFS neběží",
   "cantDownloadHash": "Hash nelze stáhnout",
   "invalidHashClipboard": "Hodnota hash ve schránce není platná.",
   "errorWhileDownloadingHash": "Při získávání hashe došlo k chybě.",
@@ -31,7 +31,7 @@
   "hashDownloaded": "Hash stažen",
   "hashDownloadedClickToView": "Hash { hash } obsah stažen. Klikněte pro zobrazení.",
   "updateAvailable": "Aktualizace je k dispozici",
-  "clickToInstall": "Kliknutím sem restartujte a nainstalujte novější verzi Desktop IPFS.",
+  "clickToInstall": "Kliknutím sem restartujte a nainstalujte novější verzi Desktop BCFS.",
   "updateNotAvailable": "Aktualizace není k dispozici",
   "runningLatestVersion": "Zdá se, že používáte nejnovější verzi.",
   "couldNotCheckForUpdates": "Aktualizace se nepodařilo zkontrolovat",
@@ -50,27 +50,27 @@
   "moveRepositoryLocation": "Přesunout umístění repozitáře",
   "polkitDialog": {
     "title": "Polkit nebyl nalezen",
-    "message": "IPFS nelze přidat do /usr/local/bin/ bez agenta polkit."
+    "message": "BCFS nelze přidat do /usr/local/bin/ bez agenta polkit."
   },
   "noPermissionDialog": {
     "title": "Žádné oprávnění",
-    "message": "IPFS nelze přidat do /usr/local/bin/, buď proto, že jste zadali nesprávné heslo, nebo jste odmítli povolení."
+    "message": "BCFS nelze přidat do /usr/local/bin/, buď proto, že jste zadali nesprávné heslo, nebo jste odmítli povolení."
   },
   "ipfsNotRunningDialog": {
-    "title": "IPFS neběží",
-    "message": "Pro provedení této akce musí být spuštěn IPFS. Chcete spustit démona?"
+    "title": "BCFS neběží",
+    "message": "Pro provedení této akce musí být spuštěn BCFS. Chcete spustit démona?"
   },
   "recoverableErrorDialog": {
     "title": "Nastala chyba",
-    "message": "Došlo k chybě, ale nezabrání to spuštění Desktop IPFS. Můžete si prohlédnout logy pro sebe nebo nahlásit chybu vývojářům."
+    "message": "Došlo k chybě, ale nezabrání to spuštění Desktop BCFS. Můžete si prohlédnout logy pro sebe nebo nahlásit chybu vývojářům."
   },
   "cannotConnectToApiDialog": {
     "title": "Nelze se připojit k API",
     "message": "BCFS Desktop se nemůže připojit k uvedené adrese API: { addr }."
   },
   "ipfsDesktopHasShutdownDialog": {
-    "title": "Desktop IPFS byl vypnut",
-    "message": "Desktop IPFS se vypnul kvůli chybě. Můžete restartovat aplikaci nebo nahlásit chybu vývojářům, což vyžadují účet na GitHub."
+    "title": "Desktop BCFS byl vypnut",
+    "message": "Desktop BCFS se vypnul kvůli chybě. Můžete restartovat aplikaci nebo nahlásit chybu vývojářům, což vyžadují účet na GitHub."
   },
   "moveRepositoryWarnDialog": {
     "title": "Přesunout úložiště",
