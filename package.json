@@ -20,7 +20,7 @@
     "build:webui:minimize": "shx rm -rf assets/webui/static/js/*.map && shx rm -rf assets/webui/static/css/*.map",
     "build:babel": "babel src --out-dir out --copy-files --source-maps",
     "build:publish": "electron-builder --publish onTag",
-    "build:binaries": "electron-builder --publish never"
+    "build:binaries": "electron-builder"
   },
   "pre-commit": [
     "lint"
