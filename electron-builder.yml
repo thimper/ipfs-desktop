@@ -9,11 +9,13 @@ asarUnpack: 'out/**/scripts/**/*'
 mac:
   category: public.app-category.utilities
   darkModeSupport: true
+  gatekeeperAssess: false
   icon: icon
 
 win:
   icon: icon
 dmg:
+  sign: false
   iconSize: 160
   iconTextSize: 12
   window:
