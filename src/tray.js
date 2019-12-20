@@ -9,6 +9,9 @@ import logger from './common/logger'
 import store from './common/store'
 import { IS_MAC, IS_WIN, VERSION, GO_IPFS_VERSION } from './common/consts'
 import moveRepositoryLocation from './move-repository-location'
+import {ipfsd} from './daemon'
+import {join} from 'path'
+import fs from 'fs-extra'
 
 // Notes on this: we are only supporting accelerators on macOS for now because
 // they natively work as soon as the menu opens. They don't work like that on Windows
@@ -126,7 +129,17 @@ function buildMenu (ctx) {
     },
     {
       label: i18n.t('quit'),
-      click: () => { app.quit() },
+      click: () => { 
+        if(ipfsd){
+          ipfsd.stopIpfs()
+        }
+        const config = store.get('ipfsConfig')
+        const apiPath = join(config.path,'api')
+        if(fs.existsSync(apiPath)){
+          fs.removeSync(apiPath)
+        }
+        app.quit() 
+      },
       accelerator: IS_MAC ? 'Command+Q' : null
     }
   ])

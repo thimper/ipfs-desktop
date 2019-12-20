@@ -68,14 +68,26 @@ export function applyDefaults(ipfsd) {
   writeConfigFile(ipfsd, config)
 }
 
-export async function applyBcfsDefaults(ipfsd, inited = true) {
+// 自定义方法
+export async function applyBcfsDefaults(repoPath, inited = true) {
   logger.info("[bcfs-node] get start")
- 
-  let bcfsnodes = await getBcfsNodes()
-  logger.info(`[bcfs-node] bcfs-node ${typeof(bcfsnodes)}`)
-  logger.info(`[bcfs-node] start add node ${bcfsnodes}`)
-  const config = readConfigFile(ipfsd)
-  checkBcfsSwarmKey(ipfsd)
+  // api
+  const apiPath = join(repoPath,'api')
+  if(fs.existsSync(apiPath)){
+    fs.removeSync(apiPath)
+  }
+  if(!fs.pathExistsSync(repoPath)){
+    return 
+  }
+  let configPath = join(repoPath, 'config')
+  if(!fs.pathExistsSync(configPath)){
+    return
+  }
+  let config = fs.readJsonSync(configPath)
+  let ip4 = getIP4()
+
+  // add bcfs swarm.key
+  checkBcfsSwarmKey(repoPath)
   try {
     let accessOrigin = config.API.HTTPHeaders["Access-Control-Allow-Origin"]
     logger.info(`[bcfs-node] add access origin ${accessOrigin}`)
@@ -88,6 +100,7 @@ export async function applyBcfsDefaults(ipfsd, inited = true) {
       logger.error(`[bcfs-node] check access origin ${error}`)
   }
 
+  let bcfsnodes = await getBcfsNodes()
   if (bcfsnodes && bcfsnodes.length > 0) {
     config.Bootstrap = []
     for (let n of bcfsnodes) {
@@ -98,38 +111,19 @@ export async function applyBcfsDefaults(ipfsd, inited = true) {
     }
   }
 
-  let ip =getIP4()
-  // add bcfs swarm.key
-  if(!!ip){
+  if(!!ip4){
     try {
+      config.Addresses.API = `/ip4/${ip4}/tcp/5001`
+      config.Addresses.Gateway = `/ip4/${ip4}/tcp/8080`
       logger.info(`config.Addresses.API==${config.Addresses.API}`)
-      config.Addresses.API = `/ip4/${ip}/tcp/5001`
-      config.Addresses.Gateway = `/ip4/${ip}/tcp/8080`
     } catch (error) {
       logger.error(`[bcfs-node] set local ip4 start `)
     }
   }
-  
-  // // Ensure strict CORS checking
-  // // See: https://github.com/ipfs/js-ipfsd-ctl/issues/333
-  // config.API = { HTTPHeaders: {} }
-  writeConfigFile(ipfsd, config)
-}
-
-function getIP4(){
-  const interfaces = os.networkInterfaces(); // 在开发环境中获取局域网中的本机iP地址
-  let IPAdress = '';
-  for(var devName in interfaces){  
-    var iface = interfaces[devName];  
-    for(var i=0;i<iface.length;i++){  
-          var alias = iface[i];  
-          if(alias.family === 'IPv4' && alias.address !== '127.0.0.1' && !alias.internal){  
-                IPAdress = alias.address;  
-          }  
-    }  
-  } 
-  logger.info("ip4===" + IPAdress)
-  return IPAdress;
+  //save path 
+  fs.writeJsonSync(configPath, config, {
+    spaces: 2
+  })
 }
 
 async function getBcfsNodes(){
@@ -154,13 +148,13 @@ async function getBcfsNodes(){
     })
     req.on("error", function (e) {
       resolve([])
-      logger.error(`[bcfs-node] http get node ${e}`);
+      logger.error(`[bcfs-node] ${options.host}+${options.path} get node ${e}`);
     })
     req.end()
   })
 }
 
- async function checkBcfsSwarmKey(ipfsd){
+ async function checkBcfsSwarmKey(repoPath){
    // request bcfs nodes
    const options = {
     method: 'GET',
@@ -168,8 +162,7 @@ async function getBcfsNodes(){
     host: 'ipfsserver.slyzn.com',
     path: '/config/get/swarm.key.line'
   }
-  
-  let repoPath = ipfsd.repoPath
+
   let swarmpath = join(repoPath ,'swarm.key')
 
   logger.info(`[bcfs-node] swarn key path ${swarmpath}`)
@@ -177,7 +170,7 @@ async function getBcfsNodes(){
   logger.info(`os.name == ${os.type}`)
   const swarnExists = await fs.pathExists(swarmpath)
   logger.info(`[bcfs-node] swarn key exists ${swarnExists }`)
-  if(!swarnExists){
+  if(true){
     let swarmtxt = await new Promise(resolve => {
       let req = http.request(options, function (r) {
         logger.info(`[bcfs-node] http get swarm key ${r.statusCode}`)
@@ -188,7 +181,7 @@ async function getBcfsNodes(){
       })
       req.on("error", function (e) {
         resolve([])
-        logger.error(`[bcfs-node] http get swarm key ${e}`);
+        logger.error(`[bcfs-node] ${options.host}+${options.path} get swarm key ${e}`);
       })
       req.end()
     })
@@ -206,7 +199,21 @@ async function getBcfsNodes(){
   }
 
 }
-
+export function getIP4(){
+  const interfaces = os.networkInterfaces(); // 在开发环境中获取局域网中的本机iP地址
+  let IPAdress = '';
+  for(var devName in interfaces){  
+    var iface = interfaces[devName];  
+    for(var i=0;i<iface.length;i++){  
+          var alias = iface[i];  
+          if(alias.family === 'IPv4' && alias.address !== '127.0.0.1' && !alias.internal){  
+                IPAdress = alias.address;  
+          }  
+    }  
+  } 
+  logger.info("ip4===" + IPAdress)
+  return IPAdress;
+}
 
 // Check for * and webui://- in allowed origins on API headers.
 // The wildcard was a ipfsd-ctl default, that we don't want, and

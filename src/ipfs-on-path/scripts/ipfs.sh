@@ -3,7 +3,7 @@
 dir="$(dirname "$(test -L "$0" && readlink "$0" || echo "$0")")"
 
 if [ -f ~/.ipfs-desktop/IPFS_PATH ]; then
-  export IPFS_PATH="$(cat ~/.ipfs-desktop/IPFS_PATH)"
+  export IPFS_PATH="$(cat ~/.bcfs-desktop/BCFS_PATH)"
 fi
 
 # Get the full path of the app directory (resolving the symlink if needed)

@@ -49,6 +49,7 @@ export default async function (ctx) {
 
     const log = logger.start('[ipfsd] start daemon', { withAnalytics: 'DAEMON_START' })
     const config = store.get('ipfsConfig')
+    logger.info('store.ipfsconfig=====' + JSON.stringify(config))
     updateStatus(STATUS.STARTING_STARTED)
 
     if (config.path) {
@@ -140,7 +141,7 @@ export default async function (ctx) {
 
 function writeIpfsPath (path) {
   fs.outputFileSync(
-    join(app.getPath('home'), './.ipfs-desktop/IPFS_PATH')
+    join(app.getPath('home'), './.bcfs-desktop/BCFS_PATH')
       .replace('app.asar', 'app.asar.unpacked'),
     path
   )

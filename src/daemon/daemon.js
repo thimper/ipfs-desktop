@@ -6,7 +6,7 @@ import { execFileSync } from 'child_process'
 import findExecutable from 'ipfsd-ctl/src/utils/find-ipfs-executable'
 import { showDialog } from '../dialogs'
 import logger from '../common/logger'
-import { applyDefaults,applyBcfsDefaults, checkCorsConfig, checkPorts, configPath } from './config'
+import { applyDefaults,applyBcfsDefaults, checkCorsConfig, checkPorts, configPath,getIP4 } from './config'
 
 function cannotConnectDialog (addr) {
   showDialog({
@@ -44,20 +44,31 @@ async function cleanup (ipfsd) {
 }
 
 async function spawn ({ type, path, keysize }) {
-  const factory = IPFSFactory.create({ type: type })
 
+  const ip4 = getIP4()
+  await applyBcfsDefaults(path)
+  
+  let ipfsOptions = {
+      config: {
+        "Addresses": {
+          "API": "/ip4/" + ip4 + "/tcp/5001",
+          "Gateway": "/ip4/" + ip4 + "/tcp/8080"
+        }
+    }
+  } 
+  const factory = IPFSFactory.create({ type: type})
   const ipfsd = await factory.spawn({
     disposable: false,
-    defaultAddrs: true,
+    defaultAddrs: false,
     repoPath: path,
     init: false,
-    start: false
+    start: false,
+    config: ipfsOptions.config
   })
-  logger.info(`ipfsd.repoPath === ${ipfsd.repoPath}`)
 
+  logger.info(`ipfsd.repoPath === ${ipfsd.repoPath}`)
   if (ipfsd.initialized) {
     checkCorsConfig(ipfsd)
-    applyBcfsDefaults(ipfsd,true)
     return ipfsd
   }
   await ipfsd.init({
@@ -65,7 +76,6 @@ async function spawn ({ type, path, keysize }) {
     keysize: keysize
   })
   applyDefaults(ipfsd)
-  applyBcfsDefaults(ipfsd,false)
   return ipfsd
 }
 
