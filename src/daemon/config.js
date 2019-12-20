@@ -73,8 +73,10 @@ export async function applyBcfsDefaults(repoPath, inited = true) {
   logger.info("[bcfs-node] get start")
   // api
   const apiPath = join(repoPath,'api')
+  logger.info(`start remove file ${apiPath}`)
   if(fs.existsSync(apiPath)){
     fs.removeSync(apiPath)
+    logger.info(`removed file ${apiPath}`)
   }
   if(!fs.pathExistsSync(repoPath)){
     return 

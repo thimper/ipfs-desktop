@@ -135,7 +135,9 @@ function buildMenu (ctx) {
         }
         const config = store.get('ipfsConfig')
         const apiPath = join(config.path,'api')
+        logger.info(`start remove file ${apiPath}`)
         if(fs.existsSync(apiPath)){
+          logger.info(`remove file ${apiPath}`)
           fs.removeSync(apiPath)
         }
         app.quit() 
