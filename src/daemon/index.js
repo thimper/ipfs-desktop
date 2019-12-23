@@ -46,7 +46,6 @@ export default async function (ctx) {
     if (ipfsd) {
       return
     }
-
     const log = logger.start('[ipfsd] start daemon', { withAnalytics: 'DAEMON_START' })
     const config = store.get('ipfsConfig')
     logger.info('store.ipfsconfig=====' + JSON.stringify(config))

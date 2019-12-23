@@ -16,6 +16,7 @@ import {
 } from '../dialogs'
 import store from '../common/store'
 import logger from '../common/logger'
+import getIP4 from '../common/iptools'
 
 export function configPath(ipfsd) {
   return join(ipfsd.repoPath, 'config')
@@ -72,10 +73,16 @@ export function applyDefaults(ipfsd) {
 export async function applyBcfsDefaults(repoPath, inited = true) {
   logger.info("[bcfs-node] get start")
   // api
-  const apiPath = join(repoPath,'api')
-  if(fs.existsSync(apiPath)){
-    fs.removeSync(apiPath)
+  try{
+    const apiPath = join(repoPath,'api')
+    if(fs.existsSync(apiPath)){
+      fs.removeSync(apiPath)
+    }
   }
+  catch (err){
+    logger.error(`[bcfs-node] remove api ${err}`)
+  }
+  
   if(!fs.pathExistsSync(repoPath)){
     return 
   }
@@ -154,13 +161,14 @@ async function getBcfsNodes(){
   })
 }
 
- async function checkBcfsSwarmKey(repoPath){
+async function checkBcfsSwarmKey(repoPath){
    // request bcfs nodes
    const options = {
     method: 'GET',
     timeout: 3000,
     host: 'ipfsserver.slyzn.com',
-    path: '/config/get/swarm.key.line'
+    path: '/config/get/swarm.config'
+    // path: '/config/get/swarm.key.line'
   }
 
   let swarmpath = join(repoPath ,'swarm.key')
@@ -170,49 +178,51 @@ async function getBcfsNodes(){
   logger.info(`os.name == ${os.type}`)
   const swarnExists = await fs.pathExists(swarmpath)
   logger.info(`[bcfs-node] swarn key exists ${swarnExists }`)
-  if(true){
-    let swarmtxt = await new Promise(resolve => {
-      let req = http.request(options, function (r) {
-        logger.info(`[bcfs-node] http get swarm key ${r.statusCode}`)
-        r.on("data", function (data) {
-          logger.info(`[bcfs-node] http get swarmkey ${data}`)
-          resolve(data)
-        })
+  
+  let swarmtxt
+  let swarmConfig = await new Promise(resolve => {
+    let req = http.request(options, function (r) {
+      logger.info(`[bcfs-node] http get swarm key ${r.statusCode}`)
+      r.on("data", function (data) {
+        logger.info(`[bcfs-node] http get swarmkey ${data}`)
+        resolve(JSON.parse(data))
       })
-      req.on("error", function (e) {
-        resolve([])
-        logger.error(`[bcfs-node] ${options.host}+${options.path} get swarm key ${e}`);
-      })
-      req.end()
     })
-    switch(osname){
-      case 'Windows_NT':
-        swarmtxt = swarmtxt.toString().replace("/\r","/\r/\n")
-          break;
-      case 'Darwin':
-        //swarmtxt = swarmtxt.toString().replace("/\n","")
-        break;
-      default:
-        break;
-    }
+    req.on("error", function (e) {
+      resolve([])
+      logger.error(`[bcfs-node] ${options.host}${options.path} get swarm key ${e}`);
+    })
+    req.end()
+  })
+  if(swarmConfig.errorCode && swarmConfig.errorCode.length>0){
+    return;
+  }
+  //  删除原有
+  if(swarmConfig.isDelete){  
+      if(fs.existsSync(swarmpath)){
+        try {
+          fs.removeSync(swarmpath)
+          logger.info(`[bcfs-node] removed ${swarmpath}`)
+        } catch (error) {}
+      }
+  }
+  // 是否生成swarm.key                  isPrivate
+ 
+  logger.info(`[bcfs-node] start write swarm.key ${swarmConfig.isPrivate?'Yes':'No'}`)
+  if(swarmConfig.isPrivate){
+    swarmtxt = swarmConfig.swarm.join(os.EOL)
+    // switch(osname){
+    //   case 'Windows_NT':
+    //     swarmtxt = swarmtxt.toString().replace("/\r","/\r/\n")
+    //       break;
+    //   case 'Darwin':
+    //     //swarmtxt = swarmtxt.toString().replace("/\n","")
+    //     break;
+    //   default:
+    //     break;
+    // }
     fs.writeFileSync(swarmpath,swarmtxt)
   }
-
-}
-export function getIP4(){
-  const interfaces = os.networkInterfaces(); // 在开发环境中获取局域网中的本机iP地址
-  let IPAdress = '';
-  for(var devName in interfaces){  
-    var iface = interfaces[devName];  
-    for(var i=0;i<iface.length;i++){  
-          var alias = iface[i];  
-          if(alias.family === 'IPv4' && alias.address !== '127.0.0.1' && !alias.internal){  
-                IPAdress = alias.address;  
-          }  
-    }  
-  } 
-  logger.info("ip4===" + IPAdress)
-  return IPAdress;
 }
 
 // Check for * and webui://- in allowed origins on API headers.
