@@ -64,9 +64,6 @@ snap:
       channels:
         - stable
 
-publish:
-  - github
-
 protocols:
   - name: IPFS
     role: Viewer

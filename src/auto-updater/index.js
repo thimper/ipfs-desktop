@@ -7,7 +7,7 @@ import { notify } from '../common/notify'
 let userRequested = false
 
 function setup (ctx) {
-  autoUpdater.autoDownload = false
+  autoUpdater.autoDownload = true
 
   autoUpdater.on('error', (err) => {
     if (userRequested) {
@@ -57,7 +57,7 @@ function setup (ctx) {
 
 async function checkForUpdates () {
   try {
-    await autoUpdater.checkForUpdates()
+    //await autoUpdater.checkForUpdates()
   } catch (_) {
     // Ignore. The errors are already handled on 'error' event.
   }
