@@ -2,11 +2,7 @@
   "name": "bcfs-desktop",
   "private": true,
   "version": "0.10.4",
-<<<<<<< HEAD
-  "productName": "BCFS Desktop",
-=======
   "productName": "BCFS-Desktop",
->>>>>>> 26e2df67aab06925c78323f688709964603e1335
   "description": "BCFS Native Application",
   "main": "out/index.js",
   "scripts": {
