@@ -5,17 +5,13 @@ import quitAndInstall from './quit-and-install'
 import logger from '../common/logger'
 import { notify } from '../common/notify'
 import log from 'electron-log'
-
 let userRequested = false
 
 function setup (ctx) {
   autoUpdater.autoDownload = false
-  // const server = 'http://down.slyzn.com/'
-  // const feed = `${server}/update/${process.platform}/${app.getVersion()}`
-  // console.log("feedURL=" + feed)
-  // autoUpdater.setFeedURL(feed)
+  
   autoUpdater.logger = log
-  autoUpdater.logger.transports.file.level = "debug"
+  autoUpdater.logger.transports.file.level = "info"
   autoUpdater.on('error', (err) => {
     if (userRequested) {
       userRequested = false
@@ -64,7 +60,11 @@ function setup (ctx) {
 
 async function checkForUpdates () {
   try {
+<<<<<<< HEAD
      await autoUpdater.checkForUpdates()
+=======
+    await autoUpdater.checkForUpdates()
+>>>>>>> 245df7abb120c97d0a6f6c0c143490886e4ef350
   } catch (_) {
     // Ignore. The errors are already handled on 'error' event.
   }
@@ -79,7 +79,11 @@ export default async function (ctx) {
       })
     }
 
+<<<<<<< HEAD
     //return
+=======
+   // return
+>>>>>>> 245df7abb120c97d0a6f6c0c143490886e4ef350
   }
 
   setup(ctx)

@@ -22,7 +22,6 @@
     "build:publish": "electron-builder --publish onTag",
     "build:binaries": "electron-builder"
   },
-
   "keywords": [
     "ipfs",
     "station",
