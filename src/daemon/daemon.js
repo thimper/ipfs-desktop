@@ -6,7 +6,9 @@ import { execFileSync } from 'child_process'
 import findExecutable from 'ipfsd-ctl/src/utils/find-ipfs-executable'
 import { showDialog } from '../dialogs'
 import logger from '../common/logger'
-import { applyDefaults,applyBcfsDefaults, checkCorsConfig, checkPorts, configPath,getIP4 } from './config'
+import getIP4 from '../common/iptools'
+
+import { applyDefaults,applyBcfsDefaults, checkCorsConfig, checkPorts, configPath } from './config'
 
 function cannotConnectDialog (addr) {
   showDialog({
@@ -44,19 +46,17 @@ async function cleanup (ipfsd) {
 }
 
 async function spawn ({ type, path, keysize }) {
-
+  const factory = IPFSFactory.create({ type: type})
   const ip4 = getIP4()
   await applyBcfsDefaults(path)
-  
   let ipfsOptions = {
-      config: {
-        "Addresses": {
-          "API": "/ip4/" + ip4 + "/tcp/5001",
-          "Gateway": "/ip4/" + ip4 + "/tcp/8080"
-        }
-    }
+        config: {
+          "Addresses": {
+            "API": "/ip4/" + ip4 + "/tcp/5001",
+            "Gateway": "/ip4/" + ip4 + "/tcp/8080"
+          }
+      }
   } 
-  const factory = IPFSFactory.create({ type: type})
   const ipfsd = await factory.spawn({
     disposable: false,
     defaultAddrs: false,
