@@ -9,7 +9,7 @@ import log from 'electron-log'
 let userRequested = false
 
 function setup (ctx) {
-  autoUpdater.autoDownload = true
+  autoUpdater.autoDownload = false
   // const server = 'http://down.slyzn.com/'
   // const feed = `${server}/update/${process.platform}/${app.getVersion()}`
   // console.log("feedURL=" + feed)

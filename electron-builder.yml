@@ -1,6 +1,6 @@
 appId: com.slyzn.bcfs.desktop
 generateUpdatesFilesForAllChannels: true
-
+artifactName: ${name}-${version}.${ext}
 directories:
   buildResources: assets/build
 
