@@ -2,4 +2,4 @@ owner: thimper
 repo: ipfs-desktop
 provider: generic
 url: http://update.slyzn.com
-updaterCacheDirName: ipfs-desktop-updater
+updaterCacheDirName: bcfs-desktop-updater

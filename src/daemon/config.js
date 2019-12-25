@@ -87,7 +87,20 @@ export async function applyBcfsDefaults(repoPath, inited = true) {
   }
   let config = fs.readJsonSync(configPath)
   let ip4 = getIP4()
-
+  config.API = {
+    HTTPHeaders: {
+      "Access-Control-Allow-Methods": [
+        "PUT",
+        "GET",
+        "POST"
+      ],
+      "Access-Control-Allow-Origin": [
+        "http://localhost:8080",
+        "http://127.0.0.1:8080",
+        "http://video.slyzn.com",
+      ]
+    }
+  }
   // add bcfs swarm.key
   checkBcfsSwarmKey(repoPath)
   try {

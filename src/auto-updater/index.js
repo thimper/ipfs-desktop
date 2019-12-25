@@ -10,7 +10,7 @@ function setup (ctx) {
   autoUpdater.autoDownload = false
   
   autoUpdater.logger = log
-  autoUpdater.logger.transports.file.level = "debug"
+  autoUpdater.logger.transports.file.level = "info"
   autoUpdater.on('error', (err) => {
     if (userRequested) {
       userRequested = false
@@ -74,7 +74,7 @@ export default async function (ctx) {
       })
     }
 
-    return
+   // return
   }
 
   setup(ctx)
