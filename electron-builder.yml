@@ -7,8 +7,8 @@ directories:
 asarUnpack: 'out/**/scripts/**/*'
 
 publish:
-  - generic
-  - url: http://down.slyzn.com
+  provider: generic
+  url: http://down.slyzn.com/download
 mac:
   category: public.app-category.utilities
   darkModeSupport: true

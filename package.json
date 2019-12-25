@@ -1,8 +1,8 @@
 {
   "name": "bcfs-desktop",
   "private": true,
-  "version": "0.10.6",
-  "productName": "BCFS Desktop",
+  "version": "0.10.4",
+  "productName": "BCFS-Desktop",
   "description": "BCFS Native Application",
   "main": "out/index.js",
   "scripts": {
@@ -22,6 +22,7 @@
     "build:publish": "electron-builder --publish onTag",
     "build:binaries": "electron-builder"
   },
+
   "keywords": [
     "ipfs",
     "station",
