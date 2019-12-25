@@ -1,4 +1,5 @@
 import { autoUpdater } from 'electron-updater'
+import {app} from 'electron'
 import i18n from 'i18next'
 import quitAndInstall from './quit-and-install'
 import logger from '../common/logger'
@@ -8,7 +9,11 @@ let userRequested = false
 
 function setup (ctx) {
   autoUpdater.autoDownload = true
-
+  // const server = 'http://down.slyzn.com/'
+  // const feed = `${server}/update/${process.platform}/${app.getVersion()}`
+  // console.log("feedURL=" + feed)
+  // autoUpdater.setFeedURL(feed)
+  //autoUpdater.logger = 
   autoUpdater.on('error', (err) => {
     if (userRequested) {
       userRequested = false
@@ -57,7 +62,7 @@ function setup (ctx) {
 
 async function checkForUpdates () {
   try {
-    //await autoUpdater.checkForUpdates()
+     await autoUpdater.checkForUpdates()
   } catch (_) {
     // Ignore. The errors are already handled on 'error' event.
   }
@@ -72,7 +77,7 @@ export default async function (ctx) {
       })
     }
 
-    return
+    //return
   }
 
   setup(ctx)

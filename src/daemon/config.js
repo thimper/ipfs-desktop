@@ -163,38 +163,40 @@ async function getBcfsNodes(){
 
 async function checkBcfsSwarmKey(repoPath){
    // request bcfs nodes
+   let requestPath = '/config/get/swarm.config' + (process.env.NODE_ENV=="development"?".test":"")
    const options = {
     method: 'GET',
     timeout: 3000,
     host: 'ipfsserver.slyzn.com',
-    path: '/config/get/swarm.config'
+    path: requestPath
     // path: '/config/get/swarm.key.line'
   }
 
   let swarmpath = join(repoPath ,'swarm.key')
 
-  logger.info(`[bcfs-node] swarn key path ${swarmpath}`)
+  logger.info(`[bcfs-node] swarm key path ${swarmpath}`)
   let osname = os.type()
   logger.info(`os.name == ${os.type}`)
-  const swarnExists = await fs.pathExists(swarmpath)
-  logger.info(`[bcfs-node] swarn key exists ${swarnExists }`)
+  const swarmExists = await fs.pathExists(swarmpath)
+  logger.info(`[bcfs-node] swarm key exists ${swarmExists }`)
   
   let swarmtxt
   let swarmConfig = await new Promise(resolve => {
     let req = http.request(options, function (r) {
-      logger.info(`[bcfs-node] http get swarm key ${r.statusCode}`)
+      logger.info(`[bcfs-node] http get swarm.key ${options.host}${options.path} ${r.statusCode}`)
       r.on("data", function (data) {
         logger.info(`[bcfs-node] http get swarmkey ${data}`)
         resolve(JSON.parse(data))
       })
     })
     req.on("error", function (e) {
+      logger.error(`[bcfs-node] ${options.host}${options.path} get swarm key ${e}`)
       resolve([])
-      logger.error(`[bcfs-node] ${options.host}${options.path} get swarm key ${e}`);
     })
     req.end()
   })
   if(swarmConfig.errorCode && swarmConfig.errorCode.length>0){
+    
     return;
   }
   //  删除原有

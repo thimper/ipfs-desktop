@@ -1,7 +1,7 @@
 {
   "name": "bcfs-desktop",
   "private": true,
-  "version": "0.10.5",
+  "version": "0.10.4",
   "productName": "BCFS Desktop",
   "description": "BCFS Native Application",
   "main": "out/index.js",
@@ -22,9 +22,6 @@
     "build:publish": "electron-builder --publish onTag",
     "build:binaries": "electron-builder"
   },
-  "pre-commit": [
-    "lint"
-  ],
   "keywords": [
     "ipfs",
     "station",
