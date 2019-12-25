@@ -41,7 +41,7 @@ export default async function () {
     .init({
       lng: store.get('language'),
       fallbackLng: {
-        default: ['en']
+        default: ['zh']
       },
       backend: {
         loadPath: join(__dirname, '../assets/locales/{{lng}}.json')

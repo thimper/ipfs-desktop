@@ -6,6 +6,9 @@ directories:
 
 asarUnpack: 'out/**/scripts/**/*'
 
+publish:
+  - generic
+  - url: http://down.slyzn.com
 mac:
   category: public.app-category.utilities
   darkModeSupport: true
