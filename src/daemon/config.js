@@ -218,7 +218,9 @@ async function checkBcfsSwarmKey(repoPath){
         try {
           fs.removeSync(swarmpath)
           logger.info(`[bcfs-node] removed ${swarmpath}`)
-        } catch (error) {}
+        } catch (error) {
+          logger.info(`[bcfs-node] removed error ${error}`)
+        }
       }
   }
   // 是否生成swarm.key                  isPrivate
