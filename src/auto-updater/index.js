@@ -3,12 +3,14 @@ import i18n from 'i18next'
 import quitAndInstall from './quit-and-install'
 import logger from '../common/logger'
 import { notify } from '../common/notify'
-
+import log from 'electron-log'
 let userRequested = false
 
 function setup (ctx) {
   autoUpdater.autoDownload = false
-
+  
+  autoUpdater.logger = log
+  autoUpdater.logger.transports.file.level = "debug"
   autoUpdater.on('error', (err) => {
     if (userRequested) {
       userRequested = false
