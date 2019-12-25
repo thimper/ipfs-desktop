@@ -1,4 +1,5 @@
 owner: thimper
 repo: ipfs-desktop
-provider: github
+provider: generic
+url: http://update.slyzn.com
 updaterCacheDirName: ipfs-desktop-updater

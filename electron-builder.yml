@@ -1,6 +1,6 @@
 appId: com.slyzn.bcfs.desktop
 generateUpdatesFilesForAllChannels: true
-
+artifactName: ${name}-${version}.${ext}
 directories:
   buildResources: assets/build
 
@@ -8,7 +8,7 @@ asarUnpack: 'out/**/scripts/**/*'
 
 publish:
   provider: generic
-  url: http://down.slyzn.com/download
+  url: http://update.slyzn.com
 mac:
   category: public.app-category.utilities
   darkModeSupport: true

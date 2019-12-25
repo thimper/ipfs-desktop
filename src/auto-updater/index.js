@@ -59,7 +59,7 @@ function setup (ctx) {
 
 async function checkForUpdates () {
   try {
-    //await autoUpdater.checkForUpdates()
+    await autoUpdater.checkForUpdates()
   } catch (_) {
     // Ignore. The errors are already handled on 'error' event.
   }
