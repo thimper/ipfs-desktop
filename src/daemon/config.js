@@ -213,6 +213,7 @@ async function checkBcfsSwarmKey(repoPath){
     return;
   }
   //  删除原有
+  logger.info(`[bcfs-node] start write swarm isDelete ${swarmConfig.isDelete?'Yes':'No'}`)
   if(swarmConfig.isDelete){  
       if(fs.existsSync(swarmpath)){
         try {
@@ -227,7 +228,8 @@ async function checkBcfsSwarmKey(repoPath){
  
   logger.info(`[bcfs-node] start write swarm.key ${swarmConfig.isPrivate?'Yes':'No'}`)
   if(swarmConfig.isPrivate){
-    swarmtxt = swarmConfig.swarm.join(os.EOL)
+    swarmtxt = swarmConfig.swarm.join("\n")  // os.EOL
+    logger.info(`[bcfs-node] swarmtxt= ${swarmtxt}`)
     // switch(osname){
     //   case 'Windows_NT':
     //     swarmtxt = swarmtxt.toString().replace("/\r","/\r/\n")
@@ -239,6 +241,7 @@ async function checkBcfsSwarmKey(repoPath){
     //     break;
     // }
     fs.writeFileSync(swarmpath,swarmtxt)
+    logger.info(`[bcfs-node] start write swarm.key success`)
   }
 }
 
